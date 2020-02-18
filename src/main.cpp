@@ -47,11 +47,11 @@ int main(void)
   int nchars = curword0.length() + curword1.length() + 1;
 
   if (curword0 != " " && curword0 != "\n") {
-    std::cout << curword0 << " ";
+    ouf << curword0 << " ";
   }
 
   if (curword1 != " " && curword1 != "\n") {
-    std::cout << curword1 << " ";
+    ouf << curword1 << " ";
   }
 
   do {
@@ -59,11 +59,11 @@ int main(void)
     curword1 = seq.nextword(curword0, curword1);
     nchars += curword1.length();
     if (curword1 != " " && curword1 != "\n") {
-      std::cout << curword1 << " ";
+      ouf << curword1 << " ";
     }
   } while (nchars < 280);
 
-  std::cout << std::endl;
+  ouf << std::endl;
 
   ouf.close();
 

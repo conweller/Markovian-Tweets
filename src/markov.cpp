@@ -7,13 +7,10 @@ void sequences::insert(std::string curword0,
     std::string nextword)
 {
   std::string key = curword0 + " " + curword1;
-  if (this->dict.count(key)) {
-    this->dict[key].push_back(nextword);
-  } else {
-    this->dict[key] = std::vector<std::string>();
-    this->dict[key].push_back(nextword);
+  if (!this->dict.count(key)) {
     this->seen.push_back(key);
   }
+  this->dict[key].push_back(nextword);
 }
 
 std::string sequences::nextword(std::string curword0,
