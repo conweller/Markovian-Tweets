@@ -47,7 +47,7 @@ int main(void)
   int nchars = curword0.length() + curword1.length() + 1;
 
   if (curword0 != " " && curword0 != "\n") {
-    std::cout << curword0 << "";
+    std::cout << curword0 << " ";
   }
 
   if (curword1 != " " && curword1 != "\n") {

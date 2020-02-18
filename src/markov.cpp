@@ -1,5 +1,4 @@
 #include "markov.h"
-#include <iostream>
 
 using namespace markov;
 
@@ -25,7 +24,6 @@ std::string sequences::nextword(std::string curword0,
     return this->randkey()[0];
   } else {
     int rand_idx = rand() % this->dict[key].size();
-    std::cout << this->dict[key].size() << std::endl;
     return this->dict[key][rand_idx];
   }
 }
