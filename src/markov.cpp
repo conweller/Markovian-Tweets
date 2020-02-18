@@ -1,8 +1,6 @@
 #include "markov.h"
 
-using namespace markov;
-
-void sequences::insert(std::string curword0,
+void markov::sequences::insert(std::string curword0,
     std::string curword1,
     std::string nextword)
 {
@@ -13,7 +11,7 @@ void sequences::insert(std::string curword0,
   this->dict[key].push_back(nextword);
 }
 
-std::string sequences::nextword(std::string curword0,
+std::string markov::sequences::nextword(std::string curword0,
     std::string curword1)
 {
   std::string key = curword0 + " " + curword1;
@@ -25,7 +23,7 @@ std::string sequences::nextword(std::string curword0,
   }
 }
 
-std::vector<std::string> sequences::randkey()
+std::vector<std::string> markov::sequences::randkey()
 {
   int rand_idx = rand() % this->seen.size();
   std::string key = this->seen[rand_idx];
