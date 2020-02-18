@@ -39,15 +39,32 @@ int main(void)
     exit(1);
   }
 
-  tuple<string, string> startkey = seq.randkey();
-  string 
+  vector<string> startkey = seq.randkey();
 
-  int nchars = curword.length();
+  curword0 = startkey[0];
+  curword1 = startkey[1];
+
+  int nchars = curword0.length() + curword1.length() + 1;
+
+  if (curword0 != " " && curword0 != "\n") {
+    std::cout << curword0 << "";
+  }
+
+  if (curword1 != " " && curword1 != "\n") {
+    std::cout << curword1 << " ";
+  }
+
   do {
-    std::cout << curword << " ";
-    curword = seq.nextword(
-    nchars += curword.length();
+    curword0 = curword1;
+    curword1 = seq.nextword(curword0, curword1);
+    nchars += curword1.length();
+    if (curword1 != " " && curword1 != "\n") {
+      std::cout << curword1 << " ";
+    }
   } while (nchars < 280);
+
+  std::cout << std::endl;
+
   ouf.close();
 
 
