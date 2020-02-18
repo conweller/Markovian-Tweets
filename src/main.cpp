@@ -1,8 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <random>
-#include <cstdlib>
-#include <ctime>
 #include "markov.h"
 
 int main(void)
