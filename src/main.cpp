@@ -5,24 +5,22 @@
 #include <ctime>
 #include "markov.h"
 
-using namespace std;
-
 int main(void)
 {
   srand((unsigned int)time(0));
 
-  ifstream inf;
-  inf.open("input.txt");
+  std::ifstream inf;
+  inf.open("src/input.txt");
   if (!inf) {
-    cout << "Error opening" << endl;
+    std::cout << "Error opening" << std::endl;
     exit(1);
   }
 
   markov::sequences seq;
 
-  string curword0 = "";
-  string curword1 = "";
-  string nextword = "";
+  std::string curword0 = "";
+  std::string curword1 = "";
+  std::string nextword = "";
 
   do {
     seq.insert(curword0, curword1, nextword);
@@ -32,14 +30,7 @@ int main(void)
 
   inf.close();
 
-  ofstream ouf;
-  ouf.open("output.txt");
-  if (!ouf) {
-    cout << "Error opening" << endl;
-    exit(1);
-  }
-
-  vector<string> startkey = seq.randkey();
+  std::vector<std::string> startkey = seq.randkey();
 
   curword0 = startkey[0];
   curword1 = startkey[1];
@@ -47,11 +38,11 @@ int main(void)
   int nchars = curword0.length() + curword1.length() + 1;
 
   if (curword0 != " " && curword0 != "\n") {
-    ouf << curword0 << " ";
+    std::cout << curword0 << " ";
   }
 
   if (curword1 != " " && curword1 != "\n") {
-    ouf << curword1 << " ";
+    std::cout << curword1 << " ";
   }
 
   do {
@@ -59,13 +50,11 @@ int main(void)
     curword1 = seq.nextword(curword0, curword1);
     nchars += curword1.length();
     if (curword1 != " " && curword1 != "\n") {
-      ouf << curword1 << " ";
+      std::cout << curword1 << " ";
     }
   } while (nchars < 280);
 
-  ouf << std::endl;
-
-  ouf.close();
+  std::cout << std::endl;
 
 
   return 0;
