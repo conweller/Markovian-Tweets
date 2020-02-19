@@ -1,7 +1,7 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
-#include <cstdlib>
+#include <random>
 
 namespace markov {
   class sequences;
@@ -13,6 +13,5 @@ class markov::sequences {
     std::string nextword(std::string, std::string);
     std::vector<std::string> randkey(void);
   private:
-    std::vector<std::string> seen;
     std::unordered_map<std::string, std::vector<std::string> > table;
 };

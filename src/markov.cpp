@@ -5,9 +5,6 @@ void markov::sequences::insert(std::string curword0,
     std::string nextword)
 {
   std::string key = curword0 + " " + curword1;
-  if (!this->table.count(key)) {
-    this->seen.push_back(key);
-  }
   this->table[key].push_back(nextword);
 }
 
@@ -25,8 +22,9 @@ std::string markov::sequences::nextword(std::string curword0,
 
 std::vector<std::string> markov::sequences::randkey()
 {
-  int rand_idx = rand() % this->seen.size();
-  std::string key = this->seen[rand_idx];
+  int rand_idx = rand() % this->table.size();
+  auto random_it =  std::next(std::begin(this->table), rand_idx);
+  std::string key = random_it->first;
   int delim_loc = key.find(" ");
   std::vector<std::string> ret;
   ret.push_back(key.substr(0, delim_loc));
