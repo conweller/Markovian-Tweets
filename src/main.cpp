@@ -15,9 +15,9 @@ int main(void)
 
   markov::sequences seq;
 
-  std::string curword0 = "";
-  std::string curword1 = "";
-  std::string nextword = "";
+  std::string curword0;
+  std::string curword1;
+  std::string nextword;
 
   do {
     seq.insert(curword0, curword1, nextword);
@@ -45,7 +45,6 @@ int main(void)
   } while (nchars < 280);
 
   std::cout << std::endl;
-
 
   return 0;
 }
