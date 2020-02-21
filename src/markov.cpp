@@ -12,12 +12,14 @@ std::string markov::sequences::nextword(std::string curword0,
     std::string curword1)
 {
   std::string key = curword0 + " " + curword1;
+  std::string ret;
   if (this->table[key].empty()) {
-    return this->randkey()[0];
+    ret = this->randkey()[0];
   } else {
     int rand_idx = rand() % this->table[key].size();
-    return this->table[key][rand_idx];
+    ret = this->table[key][rand_idx];
   }
+  return ret.empty() ? "" : ret + " ";
 }
 
 std::vector<std::string> markov::sequences::randkey()
