@@ -14,4 +14,7 @@ class markov::sequences {
     std::vector<std::string> randkey(void);
   private:
     std::unordered_map<std::string, std::vector<std::string> > table;
+    std::vector<std::vector<double> > matrix;
+    std::unordered_map<std::string, int> word_table;
+    std::unordered_map<std::string, int> sequence_table;
 };

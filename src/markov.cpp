@@ -1,5 +1,13 @@
 #include "markov.h"
 
+/*
+TODO:
+  - Accept array of strings as sequence, not 2 strings
+  - Add sequence to sequence table if necessary
+  - Add word to word table if necessary
+  - If add to the count of the word for the given sequence in the matrix
+*/
+
 void markov::sequences::insert(std::string curword0,
     std::string curword1,
     std::string nextword)
@@ -7,6 +15,12 @@ void markov::sequences::insert(std::string curword0,
   std::string key = curword0 + " " + curword1;
   this->table[key].push_back(nextword);
 }
+
+/*
+TODO:
+  - Accept array of strings as sequence, not 2 strings
+  - Need to max the array from the table
+*/
 
 std::string markov::sequences::nextword(std::string curword0,
     std::string curword1)
