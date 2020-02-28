@@ -9,7 +9,7 @@ int main(void)
   std::ifstream inf;
   inf.open("src/input.txt");
   if (!inf) {
-    std::cout << "Error opening" << std::endl;
+    std::cout << "Error opening input.txt" << std::endl;
     exit(1);
   }
 
@@ -17,14 +17,12 @@ int main(void)
 
   std::string curword0;
   std::string curword1;
-  /* std::vector<std::string> curwords = {curword0, curword1}; */
   std::string nextword;
 
   do {
     seq.insert({curword0, curword1}, nextword);
     curword0 = curword1;
     curword1 = nextword;
-    /* curwords = {curword0, curword1}; */
   } while (inf >> nextword);
 
   inf.close();
