@@ -7,7 +7,7 @@ int main(void)
   srand((unsigned int)time(0));
 
   std::ifstream inf;
-  inf.open("src/input.txt");
+  inf.open("input.txt");
   if (!inf) {
     std::cout << "Error opening input.txt" << std::endl;
     exit(1);
