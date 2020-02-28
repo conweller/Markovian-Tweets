@@ -17,12 +17,14 @@ int main(void)
 
   std::string curword0;
   std::string curword1;
+  /* std::vector<std::string> curwords = {curword0, curword1}; */
   std::string nextword;
 
   do {
-    seq.insert(curword0, curword1, nextword);
+    seq.insert({curword0, curword1}, nextword);
     curword0 = curword1;
     curword1 = nextword;
+    /* curwords = {curword0, curword1}; */
   } while (inf >> nextword);
 
   inf.close();
@@ -39,7 +41,7 @@ int main(void)
 
   do {
     curword0 = curword1;
-    curword1 = seq.nextword(curword0, curword1);
+    curword1 = seq.nextword({curword0, curword1});
     nchars += curword1.length();
     std::cout << curword1;
   } while (nchars < 280);

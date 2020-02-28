@@ -1,16 +1,20 @@
 #include "markov.h"
 
-void markov::sequences::insert(std::string curword0,
-    std::string curword1,
+void markov::sequences::insert(std::vector<std::string> curwords,
     std::string nextword)
 {
+  std::string curword0, curword1;
+  curword0 = curwords[0];
+  curword1 = curwords[1];
   std::string key = curword0 + " " + curword1;
   this->table[key].push_back(nextword);
 }
 
-std::string markov::sequences::nextword(std::string curword0,
-    std::string curword1)
+std::string markov::sequences::nextword(std::vector<std::string> curwords)
 {
+  std::string curword0, curword1;
+  curword0 = curwords[0];
+  curword1 = curwords[1];
   std::string key = curword0 + " " + curword1;
   std::string ret;
   if (this->table[key].empty()) {
