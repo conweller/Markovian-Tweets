@@ -13,7 +13,7 @@ int main(void)
     exit(1);
   }
 
-  markov::sequences seq;
+  markov::sequences seq(2);
 
   std::string curword0;
   std::string curword1;
