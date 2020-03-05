@@ -32,10 +32,10 @@ int main(void)
   curword0 = startkey[0];
   curword1 = startkey[1];
 
-  int nchars = curword0.length() + curword1.length();
+  int nchars = curword0.length() + curword1.length() + 2;
 
-  std::cout << curword0;
-  std::cout << curword1;
+  std::cout << curword0 << " ";
+  std::cout << curword1 << " ";
 
   do {
     curword0 = curword1;
