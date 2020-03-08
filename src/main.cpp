@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "markov.h"
+#include <cassert>
 
 int main(int argc, char *argv[])
 {

@@ -1,4 +1,5 @@
 #include "markov.h"
+#include <cassert>
 
 std::string words2key(std::vector<std::string> words)
 {

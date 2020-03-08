@@ -3,11 +3,13 @@ pipe=/tmp/markov_pipe
 
 trap "rm -f $pipe" EXIT
 
-if [[ ! -f input.txt ]]; then
+if [[ ! -f src/twitter_api.py ]]; then
+    echo "error 1"
     exit
 fi
 
 if [[ ! -f bin/helper ]]; then
+    echo "error 2"
     exit
 fi
 
@@ -18,8 +20,7 @@ fi
 bin/helper $pipe&
 helper_pid=$!
 
-# Replace next line with python output
-cat input.txt > $pipe
+python3 src/twitter_api.py > $pipe
 
 (sleep 4; kill -9 "${helper_pid}" >& /dev/null ;exit) &
 sleep_pid=$!

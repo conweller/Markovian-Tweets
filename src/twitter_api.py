@@ -1,7 +1,19 @@
+
+
 client_key = 'key' 
 client_secret = 'key'
 
 import base64
+
+f=open("keys.txt", "r")
+if f.mode == 'r':
+	client_key = f.readline()[:-1]
+	client_secret = f.readline()[:-1]
+else:
+	print("unable to open file")
+	exit();
+f.close()
+
 
 key_secret = '{}:{}'.format(client_key, client_secret).encode('ascii')
 b64_encoded_key = base64.b64encode(key_secret)
