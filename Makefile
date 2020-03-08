@@ -1,5 +1,5 @@
 run: bin/helper
-	bin/markov
+	bin/markov.sh
 
 bin/helper: obj/main.o obj/markov.o
 	g++ -std=c++11 obj/main.o obj/markov.o -o bin/helper

@@ -20,7 +20,7 @@ helper_pid=$!
 (sleep 4; kill -9 "${helper_pid}" >& /dev/null ;exit) &
 sleep_pid=$!
 
-Replace next line with python output
+# Replace next line with python output
 cat input.txt > $pipe
 
 wait $helper_pid
