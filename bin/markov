@@ -3,6 +3,10 @@ pipe=/tmp/markov_pipe
 
 trap "rm -f $pipe" EXIT
 
+if [[ ! -f bin/helper ]]; then
+    exit
+fi
+
 if [[ ! -p $pipe ]]; then
     mkfifo $pipe
 fi
