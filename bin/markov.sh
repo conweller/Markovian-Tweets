@@ -17,11 +17,12 @@ fi
 
 bin/helper $pipe&
 helper_pid=$!
-(sleep 4; kill -9 "${helper_pid}" >& /dev/null ;exit) &
-sleep_pid=$!
 
 # Replace next line with python output
 cat input.txt > $pipe
+
+(sleep 4; kill -9 "${helper_pid}" >& /dev/null ;exit) &
+sleep_pid=$!
 
 wait $helper_pid
 kill -PIPE $sleep_pid
