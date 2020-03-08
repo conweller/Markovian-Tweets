@@ -2,12 +2,14 @@
 #include <iostream>
 #include "markov.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
   srand((unsigned int)time(0));
 
+  assert(argc == 2);
+
   std::ifstream inf;
-  inf.open("input.txt");
+  inf.open(argv[1]);
   if (!inf) {
     std::cout << "Error opening input.txt" << std::endl;
     exit(1);

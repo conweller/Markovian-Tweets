@@ -1,14 +1,11 @@
-run: markov
-	./markov
+bin/helper: obj/main.o obj/markov.o
+	g++ -std=c++11 obj/main.o obj/markov.o -o bin/helper
 
-markov: main.o markov.o
-	g++ -std=c++11 main.o markov.o -o markov
+obj/main.o: src/main.cpp
+	g++ -c -std=c++11 src/main.cpp -o obj/main.o
 
-main.o: src/main.cpp
-	g++ -c -std=c++11 src/main.cpp
-
-markov.o: src/markov.cpp
-	g++ -c -std=c++11 src/markov.cpp
+obj/markov.o: src/markov.cpp
+	g++ -c -std=c++11 src/markov.cpp -o obj/markov.o
 
 clean:
-	rm *.o markov
+	rm obj/*.o bin/helper

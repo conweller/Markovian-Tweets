@@ -2,4 +2,4 @@ Dockerfile
 *.txt
 *.out
 *.o
-markov
+helper

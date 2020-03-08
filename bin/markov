@@ -1,0 +1,16 @@
+#!/bin/bash
+pipe=/tmp/markov_pipe
+
+trap "rm -f $pipe" EXIT
+
+if [[ ! -p $pipe ]]; then
+    mkfifo $pipe
+fi
+
+bin/helper $pipe&
+
+# Replace next line with python output
+cat input.txt > $pipe
+
+wait
+exit
