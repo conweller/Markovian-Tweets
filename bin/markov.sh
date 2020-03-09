@@ -2,6 +2,23 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 PIPE=/tmp/markov_PIPE
 
+while getopts ":s:" opt; do
+    case $opt in
+        s)
+            "$SCRIPTPATH"/helper"" "$PWD/${OPTARG}"
+            exit
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+            ;;
+    esac
+done
+
 trap "rm -f $PIPE" EXIT
 
 if [[ ! -f ""$SCRIPTPATH"/twitter_api.py" ]]; then

@@ -42,7 +42,7 @@ search_headers = {
 
 search_params = {
     'screen_name': username,
-    'count': 100
+    'count': 200
 }
 
 search_url = '{}1.1/statuses/user_timeline.json'.format(base_url)

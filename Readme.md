@@ -18,6 +18,10 @@ export MARKOV_SECRET=<your-key-here>
 ```
 
 Run with:
-```
+```sh
 bin/markov.sh <twitter-username-here>
+```
+or
+```sh
+bin/markov.sh -s <input text file name>
 ```
