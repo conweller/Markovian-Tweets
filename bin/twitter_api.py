@@ -1,19 +1,15 @@
 import sys
+import os
+import base64
+
 if not (len(sys.argv) == 2):
 	print("Please provide a username")
 	exit()
 username = sys.argv[1]
 
-import base64
 
-f=open("keys.txt", "r")
-if f.mode == 'r':
-	client_key = f.readline()[:-1]
-	client_secret = f.readline()[:-1]
-else:
-	print("unable to open file")
-	exit()
-f.close()
+client_key = os.environ['MARKOV_KEY']
+client_secret = os.environ['MARKOV_SECRET']
 
 
 key_secret = '{}:{}'.format(client_key, client_secret).encode('ascii')

@@ -1,26 +1,27 @@
 #!/bin/bash
-pipe=/tmp/markov_pipe
+SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+PIPE=/tmp/markov_PIPE
 
-trap "rm -f $pipe" EXIT
+trap "rm -f $PIPE" EXIT
 
-if [[ ! -f src/twitter_api.py ]]; then
+if [[ ! -f ""$SCRIPTPATH"/twitter_api.py" ]]; then
     echo "error 1"
     exit
 fi
 
-if [[ ! -f bin/helper ]]; then
+if [[ ! -f ""$SCRIPTPATH"/helper" ]]; then
     echo "error 2"
     exit
 fi
 
-if [[ ! -p $pipe ]]; then
-    mkfifo $pipe
+if [[ ! -p $PIPE ]]; then
+    mkfifo $PIPE
 fi
 
-bin/helper $pipe&
+"$SCRIPTPATH"/helper"" $PIPE&
 helper_pid=$!
 
-python3 src/twitter_api.py $1 > $pipe
+python3 ""$SCRIPTPATH"/twitter_api.py" $1 > $PIPE
 
 (sleep 4; kill -9 "${helper_pid}" >& /dev/null ;exit) &
 sleep_pid=$!

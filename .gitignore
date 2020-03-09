@@ -1,5 +1,6 @@
 Dockerfile
 *.txt
+keys.sh
 *.out
 *.o
 helper
