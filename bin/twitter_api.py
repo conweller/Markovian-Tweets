@@ -1,3 +1,5 @@
+import re
+import string
 import sys
 import os
 import base64
@@ -32,10 +34,6 @@ auth_data = {
 
 auth_resp = requests.post(auth_url, headers=auth_headers, data=auth_data)
 
-# print(auth_resp.status_code)
-
-# print(auth_resp.json().keys())
-
 access_token = auth_resp.json()['access_token']
 
 search_headers = {
@@ -54,4 +52,7 @@ search_resp = requests.get(search_url, headers=search_headers, params=search_par
 tweet_data = search_resp.json()
 
 for x in tweet_data:
-    print(x['text'] + '\n')
+    if x['text'][0:2] != 'RT':
+        output = re.sub('((https://)|(@))[^ $]* *', '', x['text'])
+        output = output.encode('ascii', errors='ignore').decode()
+        print(output + '\n')
