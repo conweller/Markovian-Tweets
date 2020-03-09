@@ -8,3 +8,8 @@ Build and run with:
 ```sh
 make run
 ```
+
+Run with:
+```
+bin/markov.sh <twitter-username>
+```

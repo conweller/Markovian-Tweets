@@ -1,3 +1,9 @@
+import sys
+if not (len(sys.argv) == 2):
+	print("Please provide a username")
+	exit()
+username = sys.argv[1]
+
 import base64
 
 f=open("keys.txt", "r")
@@ -6,7 +12,7 @@ if f.mode == 'r':
 	client_secret = f.readline()[:-1]
 else:
 	print("unable to open file")
-	exit();
+	exit()
 f.close()
 
 
@@ -30,9 +36,9 @@ auth_data = {
 
 auth_resp = requests.post(auth_url, headers=auth_headers, data=auth_data)
 
-print(auth_resp.status_code)
+# print(auth_resp.status_code)
 
-print(auth_resp.json().keys())
+# print(auth_resp.json().keys())
 
 access_token = auth_resp.json()['access_token']
 
@@ -41,8 +47,8 @@ search_headers = {
 }
 
 search_params = {
-    'screen_name': 'andynovocin',
-    'count': 5
+    'screen_name': username,
+    'count': 100
 }
 
 search_url = '{}1.1/statuses/user_timeline.json'.format(base_url)

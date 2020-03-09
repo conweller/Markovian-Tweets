@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  int seq_size = 2;
+  int seq_size = 1;
   markov::sequences seq(seq_size);
   std::vector<std::string> curseq;
   std::string curword;

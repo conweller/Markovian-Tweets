@@ -20,7 +20,7 @@ fi
 bin/helper $pipe&
 helper_pid=$!
 
-python3 src/twitter_api.py > $pipe
+python3 src/twitter_api.py $1 > $pipe
 
 (sleep 4; kill -9 "${helper_pid}" >& /dev/null ;exit) &
 sleep_pid=$!
