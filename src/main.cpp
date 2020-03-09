@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[])
 {
+  int i;
   srand((unsigned int)time(0));
 
   assert(argc == 2);
@@ -16,35 +17,43 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  markov::sequences seq(2);
+  int seq_size = 2;
+  markov::sequences seq(seq_size);
+  std::vector<std::string> curseq;
+  std::string curword;
 
-  std::string curword0;
-  std::string curword1;
-  std::string nextword;
+  for (i = 0; i < seq_size; ++i) {
+    if (!(inf >> curword)) {
+      std::cout << "Not enough source text" << std::endl;
+      exit(1);
+    }
+    curseq.push_back(curword);
+  }
+
 
   do {
-    seq.insert({curword0, curword1}, nextword);
-    curword0 = curword1;
-    curword1 = nextword;
-  } while (inf >> nextword);
+    seq.insert(curseq, curword);
+    curseq.erase(curseq.begin());
+    curseq.push_back(curword);
+  } while (inf >> curword);
 
   inf.close();
 
-  std::vector<std::string> startkey = seq.randkey();
+  curseq = seq.randkey();
 
-  curword0 = startkey[0];
-  curword1 = startkey[1];
+  int nchars = 0;
 
-  int nchars = curword0.length() + curword1.length() + 2;
-
-  std::cout << curword0 << " ";
-  std::cout << curword1 << " ";
+  for (auto word: curseq) {
+    std::cout << word << " ";
+    nchars += word.size() + 1;
+  }
 
   do {
-    curword0 = curword1;
-    curword1 = seq.nextword({curword0, curword1});
-    nchars += curword1.length();
-    std::cout << curword1;
+    curword = seq.nextword(curseq);
+    nchars += curword.length() + 1;
+    std::cout << curword << " ";
+    curseq.erase(curseq.begin());
+    curseq.push_back(curword);
   } while (nchars < 280);
 
   std::cout << std::endl;

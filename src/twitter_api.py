@@ -1,8 +1,3 @@
-
-
-client_key = 'key' 
-client_secret = 'key'
-
 import base64
 
 f=open("keys.txt", "r")
@@ -42,7 +37,7 @@ print(auth_resp.json().keys())
 access_token = auth_resp.json()['access_token']
 
 search_headers = {
-    'Authorization': 'Bearer {}'.format(access_token)    
+    'Authorization': 'Bearer {}'.format(access_token)
 }
 
 search_params = {
