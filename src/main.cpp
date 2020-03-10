@@ -3,6 +3,9 @@
 #include "markov.h"
 #include <cassert>
 
+const int SEQ_SIZE = 1;
+const int TWEET_SIZE = 280;
+
 int main(int argc, char *argv[])
 {
   int i;
@@ -17,12 +20,11 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  int seq_size = 1;
-  markov::sequences seq(seq_size);
+  markov::sequences seq(SEQ_SIZE);
   std::vector<std::string> curseq;
   std::string curword;
 
-  for (i = 0; i < seq_size; ++i) {
+  for (i = 0; i < SEQ_SIZE; ++i) {
     if (!(inf >> curword)) {
       std::cout << "Not enough source text" << std::endl;
       exit(1);
@@ -54,7 +56,7 @@ int main(int argc, char *argv[])
     std::cout << curword << " ";
     curseq.erase(curseq.begin());
     curseq.push_back(curword);
-  } while (nchars < 280);
+  } while (nchars < TWEET_SIZE);
 
   std::cout << std::endl;
 
