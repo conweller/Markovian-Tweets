@@ -10,8 +10,8 @@ if not (len(sys.argv) == 2):
 username = sys.argv[1]
 
 
-assert MARKOV_KEY in os.environ
-assert MARKOV_SECRET in os.environ
+assert 'MARKOV_KEY' in os.environ
+assert 'MARKOV_SECRET' in os.environ
 
 client_key = os.environ['MARKOV_KEY']
 client_secret = os.environ['MARKOV_SECRET']
