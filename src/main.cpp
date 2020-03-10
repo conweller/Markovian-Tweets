@@ -21,42 +21,44 @@ int main(int argc, char *argv[])
   }
 
   markov::sequences seqs(SEQ_SIZE);
-  std::vector<std::string> curseq;
-  std::string curword;
+  std::vector<std::string> curseq_in;
+  std::string curword_in;
 
   for (i = 0; i < SEQ_SIZE; ++i) {
-    if (!(inf >> curword)) {
+    if (!(inf >> curword_in)) {
       std::cout << "Not enough source text" << std::endl;
       exit(1);
     }
-    curseq.push_back(curword);
+    curseq_in.push_back(curword_in);
   }
 
 
   do {
-    seqs.insert(curseq, curword);
-    curseq.erase(curseq.begin());
-    curseq.push_back(curword);
-  } while (inf >> curword);
+    seqs.insert(curseq_in, curword_in);
+    curseq_in.erase(curseq_in.begin());
+    curseq_in.push_back(curword_in);
+  } while (inf >> curword_in);
 
   inf.close();
 
-  curseq = seqs.randkey();
-
+  std::vector<std::string> curseq_out = seqs.randkey();
+  std::string curword_out;
   int nchars = 0;
 
-  for (auto word: curseq) {
+  for (auto word: curseq_out) {
     std::cout << word << " ";
     nchars += word.size() + 1;
   }
 
-  do {
-    curword = seqs.nextword(curseq);
-    nchars += curword.length() + 1;
-    std::cout << curword << " ";
-    curseq.erase(curseq.begin());
-    curseq.push_back(curword);
-  } while (nchars < TWEET_SIZE);
+  while (nchars < TWEET_SIZE) {
+    if (!curword_out.empty()) {
+      std::cout << curword_out << " ";
+    }
+    curword_out = seqs.nextword(curseq_out);
+    nchars += curword_out.length() + 1;
+    curseq_out.erase(curseq_out.begin());
+    curseq_out.push_back(curword_out);
+  }
 
   std::cout << std::endl;
 
