@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <iterator>
+#include <cassert>
 
 namespace markov {
   class sequences;

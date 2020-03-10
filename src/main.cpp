@@ -1,7 +1,6 @@
 #include <fstream>
 #include <iostream>
 #include "markov.h"
-#include <cassert>
 
 const int SEQ_SIZE = 1;
 const int TWEET_SIZE = 280;
