@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  markov::sequences seq(SEQ_SIZE);
+  markov::sequences seqs(SEQ_SIZE);
   std::vector<std::string> curseq;
   std::string curword;
 
@@ -34,14 +34,14 @@ int main(int argc, char *argv[])
 
 
   do {
-    seq.insert(curseq, curword);
+    seqs.insert(curseq, curword);
     curseq.erase(curseq.begin());
     curseq.push_back(curword);
   } while (inf >> curword);
 
   inf.close();
 
-  curseq = seq.randkey();
+  curseq = seqs.randkey();
 
   int nchars = 0;
 
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
   }
 
   do {
-    curword = seq.nextword(curseq);
+    curword = seqs.nextword(curseq);
     nchars += curword.length() + 1;
     std::cout << curword << " ";
     curseq.erase(curseq.begin());
