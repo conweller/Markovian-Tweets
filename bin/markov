@@ -22,12 +22,12 @@ done
 trap "rm -f $PIPE" EXIT
 
 if [[ ! -f ""$SCRIPTPATH"/../helpers/twitter_api.py" ]]; then
-    echo "error 1"
+    printf "ERROR: Missing twitter_api.py file\n" 1>&2
     exit
 fi
 
 if [[ ! -f ""$SCRIPTPATH"/../helpers/helper" ]]; then
-    echo "error 2"
+    printf "ERROR: Missing 'helper' executable\ntry running 'make' in the Markovian-Tweets project root\n" 1>&2
     exit
 fi
 
