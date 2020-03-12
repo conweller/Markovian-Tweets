@@ -9,7 +9,7 @@ Build and run with:
 make
 ```
 
-For you to run this with a twitter account as the source text, your twitter app
+To run this with a twitter account as the source text, your twitter app
 key and secret key need to exist as environment variables. Store them in the
 following variables
 
@@ -23,7 +23,7 @@ Generate a tweet using an account as the source text like this:
 bin/markov <twitter-username-here>
 ```
 
-For you to run this with a text file as the source text, use the `-s` flag
+To run this with a text file as the source text, use the `-s` flag
 followed by the name of the file you're using:
 ```sh
 bin/markov -s <input text file name>
