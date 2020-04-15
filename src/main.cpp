@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
   std::ifstream inf;
   inf.open(argv[1]);
   if (!inf) {
-    std::cout << "Error opening input.txt" << std::endl;
+    std::cerr << "Error opening input.txt" << std::endl;
     exit(1);
   }
 
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
   for (i = 0; i < SEQ_SIZE; ++i) {
     if (!(inf >> curword_in)) {
-      std::cout << "Not enough source text" << std::endl;
+      std::cerr << "Not enough source text" << std::endl;
       exit(1);
     }
     curseq_in.push_back(curword_in);
